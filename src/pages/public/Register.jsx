@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import img from "../../assets/registration/img.png";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
+import { userInfo } from "../../context/Verification";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const { user, setUser, createUserUsingEmail } = useContext(userInfo);
+  console.log(user);
   const navigation = useNavigate();
-  const [password, setPassword] = useState("");
-  const [repeatingPassword, setRepeatingPassword] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [repeatingPassword, setRepeatingPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
   const [eye, setEye] = useState(true);
   const [eye2, setEye2] = useState(true);
@@ -26,13 +30,26 @@ const Register = () => {
       setPasswordError(true);
       return;
     }
-
     setPasswordError(false);
-
-    const allInfo = { firstName, lastName, email, password };
-    console.log("User Data:", allInfo);
-
-    alert("Registration successful!");
+    createUserUsingEmail(email, password)
+      .then((u) => {
+        Swal.fire({
+          title: "User Created Successfully",
+          icon: "success",
+          draggable: true,
+        });
+        setUser(firstName + " " + lastName);
+        console.log(u);
+        form.reset();
+      })
+      .catch((err) => {
+        console.error(err.message);
+        Swal.fire({
+          title: `${err.message}`,
+          icon: "error",
+          draggable: true,
+        });
+      });
   };
 
   return (

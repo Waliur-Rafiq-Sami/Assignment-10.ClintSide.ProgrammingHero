@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import img2 from "../../assets/registration/img2.png";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { userInfo } from "../../context/Verification";
+import { IconButton } from "@material-tailwind/react";
+import { ImGithub } from "react-icons/im";
 
 const Login = () => {
+  const { usingGoogleSignIn, usingGithubSignIn } = useContext(userInfo);
+
   const navigation = useNavigate();
+  const { loginUsingEmail } = useContext(userInfo);
   const handleLoginBtn = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const email = form.floating_email.value;
+    const password = form.floating_password.value;
+    loginUsingEmail(email, password)
+      .then((r) => {
+        console.log(r);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   return (
     <div className="md:grid md:grid-cols-2 h-screen items-center justify-center max-w-4xl mx-auto flex flex-col-reverse">
       {/* Form Section */}
       <div className="flex justify-center">
-        <form className="max-w-md w-full">
+        <form onSubmit={handleLoginBtn} className="max-w-md w-full">
           <p
             onClick={() => navigation("/")}
             className="md:inline-flex items-center gap-2 btn mb-10 hidden"
@@ -56,12 +72,26 @@ const Login = () => {
               Password
             </label>
           </div>
-          <button
-            type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-          >
-            Submit
-          </button>
+          <div className="flex gap-3">
+            <button
+              type="submit"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            >
+              Submit
+            </button>
+            <IconButton
+              onClick={usingGoogleSignIn}
+              className="rounded bg-[#ea4335] hover:shadow-[#ea4335]/20 focus:shadow-[#ea4335]/20 text-xl active:shadow-[#ea4335]/10"
+            >
+              <FaGoogle />
+            </IconButton>
+            <IconButton
+              onClick={usingGithubSignIn}
+              className="rounded bg-[#333333] hover:shadow-[#333333]/20 focus:shadow-[#333333]/20 text-xl active:shadow-[#333333]/10"
+            >
+              <ImGithub />
+            </IconButton>
+          </div>
           <p className=" mt-5">
             New to this website please{",  "}
             <span
