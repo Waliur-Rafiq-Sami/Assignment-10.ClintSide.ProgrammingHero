@@ -97,20 +97,6 @@ const Navbar = () => {
                     <span>SignIn</span>
                   </Button>
                 </Link>
-                <div className="flex gap-3">
-                  <IconButton
-                    onClick={usingGoogleSignIn}
-                    className="rounded bg-[#ea4335] hover:shadow-[#ea4335]/20 focus:shadow-[#ea4335]/20 text-xl active:shadow-[#ea4335]/10"
-                  >
-                    <FaGoogle />
-                  </IconButton>
-                  <IconButton
-                    onClick={usingGithubSignIn}
-                    className="rounded bg-[#333333] hover:shadow-[#333333]/20 focus:shadow-[#333333]/20 text-xl active:shadow-[#333333]/10"
-                  >
-                    <ImGithub />
-                  </IconButton>
-                </div>
               </div>
             </>
           )}

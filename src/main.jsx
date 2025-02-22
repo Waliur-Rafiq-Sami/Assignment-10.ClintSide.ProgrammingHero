@@ -8,10 +8,12 @@ import Home from "./pages/public/Home";
 import Login from "./pages/public/Login";
 import Register from "./pages/public/Register";
 import Verification from "./context/Verification";
+import ErrorPage from "./Error/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
