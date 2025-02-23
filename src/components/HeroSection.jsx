@@ -32,7 +32,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative w-full h-80 md:h-[600px] lg:h-[800px] overflow-hidden mx-auto border-[#e1ff35] border-t-2 ">
+    <div className="relative w-full h-80 md:h-[600px] lg:h-[800px] overflow-hidden mx-auto ">
       {/* Image Slides with Animation */}
       <div className="w-full h-full relative">
         <AnimatePresence mode="wait">

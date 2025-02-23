@@ -26,7 +26,7 @@ const Login = () => {
   };
 
   return (
-    <div className="md:grid md:grid-cols-2 h-screen items-center justify-center max-w-4xl mx-auto flex flex-col-reverse">
+    <div className="md:grid md:grid-cols-2 h-[700px] items-center justify-center max-w-4xl mx-auto flex flex-col-reverse">
       {/* Form Section */}
       <div className="flex justify-center">
         <form onSubmit={handleLoginBtn} className="max-w-md w-full">

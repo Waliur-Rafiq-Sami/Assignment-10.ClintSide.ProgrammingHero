@@ -5,10 +5,10 @@ import OurCollection from "./../../components/OurCollection";
 const Home = () => {
   return (
     <div className="">
-      <Navbar />
+      {/* <Navbar /> */}
       <HeroSection />
       <OurCollection />
-      {/* <FeaturedCategories /> */}
+      <FeaturedCategories />
     </div>
   );
 };

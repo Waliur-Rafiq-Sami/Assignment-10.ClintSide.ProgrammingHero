@@ -2,18 +2,15 @@ import React, { useContext, useState } from "react";
 import img from "../assets/Navbar/img2.jpg";
 import logo from "../assets/Navbar/logo.png";
 import { Link, NavLink } from "react-router-dom";
-import { Button, IconButton } from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 import { IoIosLogIn } from "react-icons/io";
-import { FaGoogle, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { userInfo } from "../context/Verification";
 import { CgLogOut } from "react-icons/cg";
-import { ImGithub } from "react-icons/im";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const { user, handleLogOut, usingGoogleSignIn, usingGithubSignIn } =
-    useContext(userInfo);
-  // console.log(user);
+  const { user, handleLogOut } = useContext(userInfo);
 
   const handleLogOutBtn = () => {
     handleLogOut()
@@ -28,17 +25,37 @@ const Navbar = () => {
         console.error(e);
       });
   };
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Art And Craft", path: "/artAndCraft" },
+    { name: "Add Item", path: "/addItem" },
+    { name: "View Item", path: "/viewItem" },
+  ];
 
   const link = (
     <>
-      {/* <NavLink>dsad</NavLink>
-      <NavLink>dasd</NavLink>
-      <NavLink>asd</NavLink> */}
+      <nav className=" md:space-x-5 p-2 rounded-xl bg-[#0000002c] flex">
+        {navLinks.map(({ name, path }) => (
+          <NavLink
+            key={path}
+            to={path}
+            className={({ isActive }) =>
+              `shadow-2xl px-2 relative md:text-lg text-sm font-semibold transition duration-300 group ${
+                isActive ? "text-yellow-400" : "hover:text-yellow-400"
+              }`
+            }
+          >
+            {name}
+            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+          </NavLink>
+        ))}
+      </nav>
     </>
   );
+
   return (
     <div
-      className="relative bg-no-repeat bg-center bg-cover shadow-2xl"
+      className="relative bg-no-repeat bg-center bg-cover shadow-2xl border-[#e1ff35] border-b-2 "
       style={{ backgroundImage: `url(${img})` }}
     >
       {/* Black Overlay */}
@@ -53,7 +70,7 @@ const Navbar = () => {
             />
           </a>
         </div>
-        <div>{link}</div>
+        <div className="md:flex gap-5 font-bold text-lg hidden">{link}</div>
         <div>
           {user ? (
             <>
@@ -62,7 +79,7 @@ const Navbar = () => {
                   <div className="flex items-center gap-4 justify-center">
                     <img
                       className="w-12 rounded-full"
-                      src={user.photoURL}
+                      src={user?.photoURL}
                       alt=""
                     />
                     <button onClick={handleLogOutBtn} className="btn btn-sm">
@@ -87,7 +104,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <div className="flex flex-col gap-2 justify-center items-center">
+              <div className="flex flex-col gap-2 justify-center items-center pr-5 md:pr-0">
                 <Link to="/login">
                   <Button
                     color="blue"
@@ -102,6 +119,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
+      <div className="mx-3 md:hidden">{link}</div>
     </div>
   );
 };

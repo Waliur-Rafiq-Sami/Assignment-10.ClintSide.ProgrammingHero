@@ -21,7 +21,7 @@ const Verification = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
 
-  const usingGoogleSignIn = () => {
+  const usingGoogleSignIn = async () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider)
       .then((result) => {
@@ -37,7 +37,7 @@ const Verification = ({ children }) => {
       });
   };
 
-  const usingGithubSignIn = () => {
+  const usingGithubSignIn = async () => {
     setLoading(true);
     return signInWithPopup(auth, githubProvider)
       .then((result) => {
@@ -59,10 +59,12 @@ const Verification = ({ children }) => {
   };
 
   const loginUsingEmail = (e, p) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, e, p);
   };
 
   const handleLogOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
@@ -70,8 +72,10 @@ const Verification = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (u) => {
       if (u) {
         setUser(u);
+        setLoading(false);
       } else {
         setUser(null);
+        setLoading(false);
         console.log("User signed out");
       }
     });
