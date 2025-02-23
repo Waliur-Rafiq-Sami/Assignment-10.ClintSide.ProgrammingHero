@@ -1,11 +1,68 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink, useLoaderData } from "react-router-dom";
 import bg_img from "../../assets/ArtAndCraft/christmas_2012_new_1763.jpg";
+import { userInfo } from "../../context/Verification";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const ArtAndCraft = () => {
+  const { user } = useContext(userInfo);
   const LoadedData = useLoaderData();
   const [data, setData] = useState(LoadedData);
   console.log(data);
+
+  const handleYourCardBtn = (addData) => {
+    const email = user.email;
+    const finalData = { email, data: [addData] };
+
+    fetch("http://localhost:5000/addList", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(finalData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged || data.modifiedCount > 0) {
+          toast("Successfully added", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        } else if (data.found) {
+          toast.warn("Sorry! Already Added", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        } else {
+          toast.error("Sorry! Something Wrong", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        }
+        console.log(data);
+      });
+  };
 
   return (
     <div
@@ -118,12 +175,28 @@ const ArtAndCraft = () => {
                   <Link to={`/update/${d._id}`}>
                     <button>update</button>
                   </Link>
+                  <button onClick={() => handleYourCardBtn(d)}>
+                    Add your card
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
     </div>
   );
 };

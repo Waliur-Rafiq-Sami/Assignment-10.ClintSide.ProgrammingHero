@@ -8,6 +8,7 @@ import AddItems from "./../components/AddItems";
 import UpdateItem from "../components/UpdateItem";
 import Login from "./../pages/public/Login";
 import Register from "./../pages/public/Register";
+import ViewCraft from "../pages/private/ViewCraft";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,19 @@ const router = createBrowserRouter([
           {
             path: "/addItem",
             element: <AddItems />,
+          },
+        ],
+      },
+      {
+        path: "/viewItem",
+        element: <PrivateRoute />,
+        children: [
+          {
+            path: "/viewItem",
+            element: <ViewCraft />,
+            // loader: ({ params }) => {
+            //   fetch(`http://localhost:5000/addList/${params.id}`);
+            // },
           },
         ],
       },
