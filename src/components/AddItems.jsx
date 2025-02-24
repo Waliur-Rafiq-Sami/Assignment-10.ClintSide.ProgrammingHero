@@ -28,7 +28,7 @@ const AddItems = () => {
       submittedAt: currentTime,
     };
     fetch(
-      "https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/addItem",
+      "https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/addItem",
       {
         method: "POST",
         headers: {

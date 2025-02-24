@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element: <ArtAndCraft />,
         loader: () =>
           fetch(
-            "https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/artAndCraft"
+            "https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft"
           ),
       },
       {
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
             element: <UpdateItem />,
             loader: ({ params }) =>
               fetch(
-                `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/update/${params.id}`
+                `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/update/${params.id}`
               ),
           },
         ],

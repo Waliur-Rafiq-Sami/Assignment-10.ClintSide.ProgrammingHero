@@ -32,7 +32,7 @@ const UpdateItem = () => {
     };
 
     fetch(
-      `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/update/${id}`,
+      `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/update/${id}`,
       {
         method: "POST",
         headers: {

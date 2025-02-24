@@ -9,7 +9,7 @@ const ViewCraft = () => {
   useEffect(() => {
     if (!loading && user?.email) {
       fetch(
-        `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/viewList?email=${user.email}`
+        `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/viewList?email=${user.email}`
       )
         .then((res) => res.json())
         .then((data) => setLoadedCard(data))
@@ -28,7 +28,7 @@ const ViewCraft = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/viewItem`,
+          `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/viewItem`,
           {
             method: "DELETE",
             headers: {

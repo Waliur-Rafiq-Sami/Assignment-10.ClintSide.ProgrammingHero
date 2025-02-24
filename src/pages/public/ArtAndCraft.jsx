@@ -15,7 +15,7 @@ const ArtAndCraft = () => {
     const finalData = { email, data: [addData] };
 
     fetch(
-      "https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/addList",
+      "https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/addList",
       {
         method: "PUT",
         headers: {
