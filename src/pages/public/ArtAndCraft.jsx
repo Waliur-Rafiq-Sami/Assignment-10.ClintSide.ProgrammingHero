@@ -14,13 +14,16 @@ const ArtAndCraft = () => {
     const email = user.email;
     const finalData = { email, data: [addData] };
 
-    fetch("http://localhost:5000/addList", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(finalData),
-    })
+    fetch(
+      "https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/addList",
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(finalData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged || data.modifiedCount > 0) {
@@ -66,9 +69,10 @@ const ArtAndCraft = () => {
 
   return (
     <div
-      className="bg-center bg-cover bg-no-repeat"
-      style={{ backgroundImage: `url(${bg_img})` }}
+      className="bg-center bg-cover bg-no-repeat relative"
+      style={{ backgroundImage: `url(${bg_img}) ` }}
     >
+      <div className="absolute inset-0 bg-black opacity-40"></div>
       <div className=" container mx-auto ">
         <div className="text-end">
           <ul className="menu menu-horizontal py-0 gap-5 my-2">

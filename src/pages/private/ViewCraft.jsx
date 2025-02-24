@@ -8,7 +8,9 @@ const ViewCraft = () => {
   const { user, loading } = useContext(userInfo);
   useEffect(() => {
     if (!loading && user?.email) {
-      fetch(`http://localhost:5000/viewList?email=${user.email}`)
+      fetch(
+        `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/viewList?email=${user.email}`
+      )
         .then((res) => res.json())
         .then((data) => setLoadedCard(data))
         .catch((error) => console.error("Error fetching data:", error));
@@ -18,7 +20,6 @@ const ViewCraft = () => {
     console.log("de", id);
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -26,13 +27,16 @@ const ViewCraft = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/viewItem`, {
-          method: "DELETE",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({ e: user.email, id }),
-        })
+        fetch(
+          `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/viewItem`,
+          {
+            method: "DELETE",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ e: user.email, id }),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.success) {

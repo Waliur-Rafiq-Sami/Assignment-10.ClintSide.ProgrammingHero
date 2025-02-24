@@ -20,7 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/artAndCraft",
         element: <ArtAndCraft />,
-        loader: () => fetch("http://localhost:5000/artAndCraft"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/artAndCraft"
+          ),
       },
       {
         path: "/addItem",
@@ -40,7 +43,7 @@ const router = createBrowserRouter([
             path: "/viewItem",
             element: <ViewCraft />,
             // loader: ({ params }) => {
-            //   fetch(`http://localhost:5000/addList/${params.id}`);
+            //   fetch(`https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/addList/${params.id}`);
             // },
           },
         ],
@@ -53,7 +56,9 @@ const router = createBrowserRouter([
             path: "/update/:id",
             element: <UpdateItem />,
             loader: ({ params }) =>
-              fetch(`http://localhost:5000/update/${params.id}`),
+              fetch(
+                `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/update/${params.id}`
+              ),
           },
         ],
       },

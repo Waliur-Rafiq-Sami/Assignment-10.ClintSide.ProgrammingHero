@@ -31,13 +31,16 @@ const UpdateItem = () => {
       submittedAt: currentTime,
     };
 
-    fetch(`http://localhost:5000/update/${id}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(artAndCraft),
-    })
+    fetch(
+      `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/update/${id}`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(artAndCraft),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         e.target.reset();
