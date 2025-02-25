@@ -10,6 +10,7 @@ import Login from "./../pages/public/Login";
 import Register from "./../pages/public/Register";
 import ViewCraft from "../pages/private/ViewCraft";
 
+// https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,10 +21,7 @@ const router = createBrowserRouter([
       {
         path: "/artAndCraft",
         element: <ArtAndCraft />,
-        loader: () =>
-          fetch(
-            "https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft"
-          ),
+        loader: () => fetch("http://localhost:5000/artAndCraft"),
       },
       {
         path: "/addItem",
@@ -43,7 +41,7 @@ const router = createBrowserRouter([
             path: "/viewItem",
             element: <ViewCraft />,
             // loader: ({ params }) => {
-            //   fetch(`https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/artAndCraft/addList/${params.id}`);
+            //   fetch(`http://localhost:5000/artAndCraft/addList/${params.id}`);
             // },
           },
         ],
@@ -56,9 +54,7 @@ const router = createBrowserRouter([
             path: "/update/:id",
             element: <UpdateItem />,
             loader: ({ params }) =>
-              fetch(
-                `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/update/${params.id}`
-              ),
+              fetch(`http://localhost:5000/update/${params.id}`),
           },
         ],
       },

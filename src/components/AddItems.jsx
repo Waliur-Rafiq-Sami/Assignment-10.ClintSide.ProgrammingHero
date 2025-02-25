@@ -27,16 +27,13 @@ const AddItems = () => {
       description: formData.get("description"),
       submittedAt: currentTime,
     };
-    fetch(
-      "https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/addItem",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(artAndCraft),
-      }
-    )
+    fetch("http://localhost:5000/addItem", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(artAndCraft),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

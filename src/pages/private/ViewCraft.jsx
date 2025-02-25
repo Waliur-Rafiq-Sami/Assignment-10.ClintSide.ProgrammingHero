@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { userInfo } from "../../context/Verification";
 import Swal from "sweetalert2";
+import img from "../../assets/empty/empty-cart.png";
 
 const ViewCraft = () => {
   const [loadedCard, setLoadedCard] = useState([]);
@@ -8,9 +9,7 @@ const ViewCraft = () => {
   const { user, loading } = useContext(userInfo);
   useEffect(() => {
     if (!loading && user?.email) {
-      fetch(
-        `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/viewList?email=${user.email}`
-      )
+      fetch(`http://localhost:5000/viewList?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setLoadedCard(data))
         .catch((error) => console.error("Error fetching data:", error));
@@ -27,16 +26,13 @@ const ViewCraft = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app/viewItem`,
-          {
-            method: "DELETE",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify({ e: user.email, id }),
-          }
-        )
+        fetch(`http://localhost:5000/viewItem`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ e: user.email, id }),
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.success) {
@@ -58,31 +54,37 @@ const ViewCraft = () => {
   // console.log(loadedCard);
   return (
     <div>
-      <div className="mx-auto container">
-        <div className="grid grid-cols-1 gap-10 ">
-          {loadedCard.map((d) => (
-            <div key={d._id}>
-              <div className="card bg-base-100 w-96 shadow-xl border-2 ">
-                <figure>
-                  <img src={d.photo} alt="Shoes" />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">
-                    {d._id}
-                    <div className="badge badge-secondary">NEW</div>
-                  </h2>
-                  <p
-                    onClick={() => handleDelete(d._id)}
-                    className="btn btn-accent"
-                  >
-                    Delete
-                  </p>
+      {loadedCard.length ? (
+        <div className="mx-auto container">
+          <div className="grid grid-cols-1 gap-10 ">
+            {loadedCard.map((d) => (
+              <div key={d._id}>
+                <div className="card bg-base-100 w-96 shadow-xl border-2 ">
+                  <figure>
+                    <img src={d.photo} alt="Shoes" />
+                  </figure>
+                  <div className="card-body">
+                    <h2 className="card-title">
+                      {d._id}
+                      <div className="badge badge-secondary">NEW</div>
+                    </h2>
+                    <p
+                      onClick={() => handleDelete(d._id)}
+                      className="btn btn-accent"
+                    >
+                      Delete
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="container mx-auto h-lvh flex justify-center items-center">
+          {<img src={img} alt="" />}
+        </div>
+      )}
     </div>
   );
 };

@@ -63,21 +63,37 @@ const Verification = ({ children }) => {
     return signInWithEmailAndPassword(auth, e, p);
   };
 
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
     setLoading(true);
-    return signOut(auth);
+    return signOut(auth).then(() => {
+      setUser(null);
+      localStorage.removeItem("user");
+    });
+  };
+
+  const saveUserToLocalStorage = (user) => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    }
+  };
+  const loadUserFromLocalStorage = () => {
+    const loadUser = localStorage.getItem("user");
+    if (loadUser) {
+      setUser(JSON.parse(loadUser));
+    }
   };
 
   useEffect(() => {
+    loadUserFromLocalStorage();
     const unSubscribe = onAuthStateChanged(auth, (u) => {
       if (u) {
         setUser(u);
-        setLoading(false);
+        saveUserToLocalStorage(u);
       } else {
         setUser(null);
-        setLoading(false);
         console.log("User signed out");
       }
+      setLoading(false);
     });
     return () => unSubscribe();
   }, []);
