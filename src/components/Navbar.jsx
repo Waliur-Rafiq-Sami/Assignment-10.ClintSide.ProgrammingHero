@@ -27,7 +27,7 @@ const Navbar = () => {
   };
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Art And Craft", path: "/artAndCraft" },
+    { name: "Art And Craft", path: "/artAndCraft/all" },
     { name: "Add Item", path: "/addItem" },
     { name: "View Item", path: "/viewItem" },
   ];

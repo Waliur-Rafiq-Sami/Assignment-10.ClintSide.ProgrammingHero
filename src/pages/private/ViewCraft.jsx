@@ -55,8 +55,11 @@ const ViewCraft = () => {
   return (
     <div>
       {loadedCard.length ? (
-        <div className="mx-auto container">
+        <div className="mx-auto container my-5">
           <div className="grid grid-cols-1 gap-10 ">
+            <h2 className="text-3xl text-center font-semibold my-5">
+              Your Selected Item
+            </h2>
             {loadedCard.map((d) => (
               <div key={d._id}>
                 <div className="card bg-base-100 w-96 shadow-xl border-2 ">

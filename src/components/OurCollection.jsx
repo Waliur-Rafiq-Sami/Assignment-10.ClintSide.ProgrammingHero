@@ -10,12 +10,20 @@ import { Link } from "react-router-dom";
 
 const OurCollection = () => {
   const images = [
-    { src: img, text: "Lampworking" },
-    { src: img1, text: "Glass Painting" },
-    { src: img2, text: "Paper Quilling & origami" },
-    { src: img3, text: "Glass Dying & Staining" },
-    { src: img4, text: "Card Making" },
-    { src: img5, text: "Scrapbooking Magic" },
+    { src: img4, text: "Card Making", link: "/artAndCraft/cardMaking" },
+    { src: img5, text: "Scrapbooking", link: "/artAndCraft/scrapbooking" },
+    {
+      src: img2,
+      text: "Paper Quilling & origami",
+      link: "/artAndCraft/paperQuillingOrigami",
+    },
+    { src: img1, text: "Glass Painting", link: "/artAndCraft/glassPainting" },
+    { src: img, text: "Lampworking", link: "/artAndCraft/lampworking" },
+    {
+      src: img3,
+      text: "Glass Dying & Staining",
+      link: "/artAndCraft/glassDyingStaining",
+    },
   ];
 
   return (
@@ -34,6 +42,7 @@ const OurCollection = () => {
           <div className="flex flex-wrap justify-around gap-4">
             {images.map((item, index) => (
               <Link
+                to={item.link}
                 key={index}
                 className="relative md:w-50 w-full md:h-64 m-2 rounded-2xl overflow-hidden group shadow-2xl"
               >

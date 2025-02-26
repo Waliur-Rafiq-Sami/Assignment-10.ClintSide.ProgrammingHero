@@ -9,6 +9,13 @@ import UpdateItem from "../components/UpdateItem";
 import Login from "./../pages/public/Login";
 import Register from "./../pages/public/Register";
 import ViewCraft from "../pages/private/ViewCraft";
+import Scrapbooking from "../pages/SubCatagory/Scrapbooking";
+import PaperQuilingAndOrigamiPage from "../pages/SubCatagory/PaperQuilingAndOrigamiPage";
+import Lampworking from "../pages/SubCatagory/Lampworking";
+import GlassDying from "../pages/SubCatagory/GlassDying";
+import GlassPainting from "../pages/SubCatagory/GlassPainting";
+import AllArtAndCraft from "../pages/SubCatagory/AllArtAndCraft";
+import CardMaking from "../pages/SubCatagory/cardMaking";
 
 // https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app
 const router = createBrowserRouter([
@@ -21,7 +28,51 @@ const router = createBrowserRouter([
       {
         path: "/artAndCraft",
         element: <ArtAndCraft />,
-        loader: () => fetch("http://localhost:5000/artAndCraft"),
+        children: [
+          {
+            path: "/artAndCraft/all",
+            element: <AllArtAndCraft />,
+            loader: () => fetch("http://localhost:5000/artAndCraft"),
+          },
+          {
+            path: "/artAndCraft/cardMaking",
+            element: <CardMaking />,
+            loader: () =>
+              fetch("http://localhost:5000/artAndCraft/Card Making"),
+          },
+          {
+            path: "/artAndCraft/scrapbooking",
+            element: <Scrapbooking />,
+            loader: () =>
+              fetch("http://localhost:5000/artAndCraft/Scrapbooking"),
+          },
+          {
+            path: "/artAndCraft/paperQuillingOrigami",
+            element: <PaperQuilingAndOrigamiPage />,
+            loader: () =>
+              fetch(
+                "http://localhost:5000/artAndCraft/Paper Quilling & Origami"
+              ),
+          },
+          {
+            path: "/artAndCraft/glassPainting",
+            element: <GlassPainting />,
+            loader: () =>
+              fetch("http://localhost:5000/artAndCraft/Glass Painting"),
+          },
+          {
+            path: "/artAndCraft/lampworking",
+            element: <Lampworking />,
+            loader: () =>
+              fetch("http://localhost:5000/artAndCraft/Lampworking"),
+          },
+          {
+            path: "/artAndCraft/glassDyingStaining",
+            element: <GlassDying />,
+            loader: () =>
+              fetch("http://localhost:5000/artAndCraft/Glass Dying & Staining"),
+          },
+        ],
       },
       {
         path: "/addItem",
