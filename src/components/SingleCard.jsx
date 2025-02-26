@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 import { userInfo } from "../context/Verification";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
@@ -80,11 +80,12 @@ const SingleCard = ({ data }) => {
             </p>
           </div>
           <div className="flex flex-row-reverse justify-end ml-2 gap-2 py-5 mr-2 border-t border-dashed pt-3">
-            <Link to={`/update/${_id}`}>
-              <button className="btn btn-sm bg-blue-700 border-none hover:bg-blue-600">
-                View
-              </button>
-            </Link>
+            <button
+              onClick={() => document.getElementById("my_modal_5").showModal()}
+              className="btn btn-sm bg-blue-700 border-none hover:bg-blue-600"
+            >
+              View
+            </button>
             {user ? (
               <Link>
                 <button
@@ -118,6 +119,25 @@ const SingleCard = ({ data }) => {
           </div>
         </div>
       </div>
+      {/* // model  */}
+      {/* Open the modal using document.getElementById('ID').showModal() method */}
+      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <form method="dialog">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
+          <h3 className="font-bold text-lg">Hello!</h3>
+          <p className="py-4">
+            Press ESC key or click the button below to close
+          </p>
+        </div>
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
     </div>
   );
 };
