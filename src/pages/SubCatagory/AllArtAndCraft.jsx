@@ -1,25 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import SingleCard from "../../components/SingleCard";
-import img from "../../assets/empty/not-removebg-preview.png";
+import NoCardFound from "./NoCardFound";
+import LoadingDataModat from "./LoadingDataModat";
 
 const AllArtAndCraft = () => {
   const LoadedData = useLoaderData();
-  console.log(LoadedData);
+  const [data, setData] = useState([]);
+  const [loadingData, setLoadingData] = useState(true);
+
+  useEffect(() => {
+    if (Array.isArray(LoadedData)) {
+      setData(LoadedData);
+    } else {
+      setData([]);
+    }
+    setLoadingData(false);
+  }, [LoadedData]);
   return (
     <div>
       <h2 className="text-center text-black font-semibold text-5xl my-10 pt-5">
         All Art & Craft
       </h2>
-      {LoadedData.length ? (
+      {loadingData ? (
+        <div>
+          <LoadingDataModat></LoadingDataModat>
+        </div>
+      ) : data.length ? (
         <div className="grid xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
-          {LoadedData.map((d) => (
+          {data.map((d) => (
             <SingleCard data={d} key={d._id}></SingleCard>
           ))}
         </div>
       ) : (
         <>
-          <img className="my-10 " src={img} alt="" />
+          <NoCardFound></NoCardFound>
         </>
       )}
     </div>

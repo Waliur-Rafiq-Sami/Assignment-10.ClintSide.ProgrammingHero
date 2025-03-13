@@ -27,7 +27,8 @@ const AddItems = () => {
       description: formData.get("description"),
       submittedAt: currentTime,
     };
-    fetch("http://localhost:5000/addItem", {
+    console.log("click");
+    fetch("http://localhost:5173/addItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",

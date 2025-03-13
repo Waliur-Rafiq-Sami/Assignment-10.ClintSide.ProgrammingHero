@@ -9,7 +9,7 @@ const ViewCraft = () => {
   const { user, loading } = useContext(userInfo);
   useEffect(() => {
     if (!loading && user?.email) {
-      fetch(`http://localhost:5000/viewList?email=${user.email}`)
+      fetch(`http://localhost:5173/viewList?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setLoadedCard(data))
         .catch((error) => console.error("Error fetching data:", error));
@@ -26,7 +26,7 @@ const ViewCraft = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/viewItem`, {
+        fetch(`http://localhost:5173/viewItem`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",

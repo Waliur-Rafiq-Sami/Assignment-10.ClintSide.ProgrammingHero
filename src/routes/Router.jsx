@@ -17,7 +17,9 @@ import GlassPainting from "../pages/SubCatagory/GlassPainting";
 import AllArtAndCraft from "../pages/SubCatagory/AllArtAndCraft";
 import CardMaking from "../pages/SubCatagory/cardMaking";
 
-// https://assignment-10-server-sid-git-8bff74-waliur-rafiq-samis-projects.vercel.app
+// http://localhost:5000
+// http://localhost:5000
+// http://localhost:5000
 const router = createBrowserRouter([
   {
     path: "/",
