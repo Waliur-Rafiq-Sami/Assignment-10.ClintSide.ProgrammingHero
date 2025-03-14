@@ -19,7 +19,7 @@ const SingleCard = ({ data }) => {
     const email = user.email;
     const finalData = { email, data: [addData] };
 
-    fetch("hhttps://test-rose-ten-12.vercel.app/addList", {
+    fetch("https://test-rose-ten-12.vercel.app/addList", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
