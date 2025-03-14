@@ -14,7 +14,7 @@ import Swal from "sweetalert2";
 export const userInfo = createContext();
 
 const Verification = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("");
   const [userName, setUserName] = useState(null);
   const [loading, setLoading] = useState(true);
 

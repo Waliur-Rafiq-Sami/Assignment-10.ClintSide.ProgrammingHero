@@ -31,7 +31,7 @@ const UpdateItem = () => {
       submittedAt: currentTime,
     };
 
-    fetch(`http://localhost:5000/update/${id}`, {
+    fetch(`https://test-rose-ten-12.vercel.app/update/${id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

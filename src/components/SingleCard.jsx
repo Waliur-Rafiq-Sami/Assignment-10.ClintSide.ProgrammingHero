@@ -1,6 +1,5 @@
 import React, { useContext, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Bounce, toast } from "react-toastify";
 import { userInfo } from "../context/Verification";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import DetailsModal from "./DetailsModal";

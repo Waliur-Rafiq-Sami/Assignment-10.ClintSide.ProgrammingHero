@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import SingleCard from "../../components/SingleCard";
-import img from "../../assets/empty/not-removebg-preview.png";
 import NoCardFound from "./NoCardFound";
 import LoadingDataModat from "./LoadingDataModat";
 
@@ -10,12 +9,11 @@ const Scrapbooking = () => {
   const [data, setData] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
 
-  // Ensure data is set only if it's an array
   useEffect(() => {
     if (Array.isArray(LoadedData)) {
       setData(LoadedData);
     } else {
-      setData([]); // If data is invalid, set an empty array
+      setData([]);
     }
     setLoadingData(false);
   }, [LoadedData]);

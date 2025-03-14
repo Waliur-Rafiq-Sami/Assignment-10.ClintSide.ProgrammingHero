@@ -38,7 +38,7 @@ const Register = () => {
           icon: "success",
           draggable: true,
         });
-        setUser(firstName + " " + lastName);
+        // setUser(firstName + " " + lastName);
         console.log(u);
         form.reset();
       })

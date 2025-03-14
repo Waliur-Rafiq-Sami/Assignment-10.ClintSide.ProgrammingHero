@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { userInfo } from "../../context/Verification";
 import { IconButton } from "@material-tailwind/react";
 import { ImGithub } from "react-icons/im";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { usingGoogleSignIn, usingGithubSignIn } = useContext(userInfo);
@@ -19,6 +20,12 @@ const Login = () => {
     loginUsingEmail(email, password)
       .then((r) => {
         console.log(r);
+        Swal.fire({
+          title: "User Created Successfully",
+          icon: "success",
+          draggable: true,
+        });
+        form.reset();
       })
       .catch((e) => {
         console.log(e);
