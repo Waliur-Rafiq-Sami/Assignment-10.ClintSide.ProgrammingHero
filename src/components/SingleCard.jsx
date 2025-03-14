@@ -1,5 +1,6 @@
-import React, { useContext, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import { Bounce, toast } from "react-toastify";
 import { userInfo } from "../context/Verification";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import DetailsModal from "./DetailsModal";
@@ -12,6 +13,60 @@ const SingleCard = ({ data }) => {
 
   const handleViewClick = () => {
     setSelectedData(data);
+  };
+
+  const handleYourCardBtn = (addData) => {
+    const email = user.email;
+    const finalData = { email, data: [addData] };
+
+    fetch("hhttps://test-rose-ten-12.vercel.app/addList", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(finalData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged || data.modifiedCount > 0) {
+          toast("Successfully added", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        } else if (data.found) {
+          toast.warn("Sorry! Already Added", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        } else {
+          toast.error("Sorry! Something Wrong", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        }
+        console.log(data);
+      });
   };
 
   return (
@@ -39,7 +94,10 @@ const SingleCard = ({ data }) => {
               View
             </button>
             {user ? (
-              <button className="btn btn-sm bg-yellow-600 border-none hover:bg-yellow-500">
+              <button
+                className="btn btn-sm bg-yellow-600 border-none hover:bg-yellow-500"
+                onClick={() => handleYourCardBtn(data)}
+              >
                 Add
               </button>
             ) : (

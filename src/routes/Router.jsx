@@ -18,8 +18,8 @@ import AllArtAndCraft from "../pages/SubCatagory/AllArtAndCraft";
 import CardMaking from "../pages/SubCatagory/cardMaking";
 
 // https://test-rose-ten-12.vercel.app
-// https://test-rose-ten-12.vercel.app
-// https://test-rose-ten-12.vercel.app
+// hhttps://test-rose-ten-12.vercel.app
+// hhttps://test-rose-ten-12.vercel.app
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,14 +35,14 @@ const router = createBrowserRouter([
             path: "/artAndCraft/all",
             element: <AllArtAndCraft />,
             loader: () =>
-              fetch("https://test-rose-ten-12.vercel.app/artAndCraft"),
+              fetch("hhttps://test-rose-ten-12.vercel.app/artAndCraft"),
           },
           {
             path: "/artAndCraft/cardMaking",
             element: <CardMaking />,
             loader: () =>
               fetch(
-                "https://test-rose-ten-12.vercel.app/artAndCraft/Card Making"
+                "hhttps://test-rose-ten-12.vercel.app/artAndCraft/Card Making"
               ),
           },
           {
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
             element: <Scrapbooking />,
             loader: () =>
               fetch(
-                "https://test-rose-ten-12.vercel.app/artAndCraft/Scrapbooking"
+                "hhttps://test-rose-ten-12.vercel.app/artAndCraft/Scrapbooking"
               ),
           },
           {
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
             element: <PaperQuilingAndOrigamiPage />,
             loader: () =>
               fetch(
-                "https://test-rose-ten-12.vercel.app/artAndCraft/Paper Quilling & Origami"
+                "hhttps://test-rose-ten-12.vercel.app/artAndCraft/Paper Quilling & Origami"
               ),
           },
           {
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
             element: <GlassPainting />,
             loader: () =>
               fetch(
-                "https://test-rose-ten-12.vercel.app/artAndCraft/Glass Painting"
+                "hhttps://test-rose-ten-12.vercel.app/artAndCraft/Glass Painting"
               ),
           },
           {
@@ -74,7 +74,7 @@ const router = createBrowserRouter([
             element: <Lampworking />,
             loader: () =>
               fetch(
-                "https://test-rose-ten-12.vercel.app/artAndCraft/Lampworking"
+                "hhttps://test-rose-ten-12.vercel.app/artAndCraft/Lampworking"
               ),
           },
           {
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
             element: <GlassDying />,
             loader: () =>
               fetch(
-                "https://test-rose-ten-12.vercel.app/artAndCraft/Glass Dying & Staining"
+                "hhttps://test-rose-ten-12.vercel.app/artAndCraft/Glass Dying & Staining"
               ),
           },
         ],
@@ -105,7 +105,7 @@ const router = createBrowserRouter([
             path: "/viewItem",
             element: <ViewCraft />,
             // loader: ({ params }) => {
-            //   fetch(`https://test-rose-ten-12.vercel.app/artAndCraft/addList/${params.id}`);
+            //   fetch(`hhttps://test-rose-ten-12.vercel.app/artAndCraft/addList/${params.id}`);
             // },
           },
         ],
@@ -118,7 +118,7 @@ const router = createBrowserRouter([
             path: "/update/:id",
             element: <UpdateItem />,
             loader: ({ params }) =>
-              fetch(`https://test-rose-ten-12.vercel.app/update/${params.id}`),
+              fetch(`hhttps://test-rose-ten-12.vercel.app/update/${params.id}`),
           },
         ],
       },

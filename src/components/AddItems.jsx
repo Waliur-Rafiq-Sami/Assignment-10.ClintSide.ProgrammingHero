@@ -28,7 +28,7 @@ const AddItems = () => {
       submittedAt: currentTime,
     };
     console.log("click");
-    fetch("https://test-rose-ten-12.vercel.app/addItem", {
+    fetch("hhttps://test-rose-ten-12.vercel.app/addItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
