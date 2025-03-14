@@ -10,7 +10,7 @@ const ViewCraft = () => {
   const { user, loading } = useContext(userInfo);
   useEffect(() => {
     if (!loading && user?.email) {
-      fetch(`hhttps://test-rose-ten-12.vercel.app/viewList?email=${user.email}`)
+      fetch(`https://test-rose-ten-12.vercel.app/viewList?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setLoadedCard(data))
         .catch((error) => console.error("Error fetching data:", error));
@@ -27,7 +27,7 @@ const ViewCraft = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`hhttps://test-rose-ten-12.vercel.app/viewItem`, {
+        fetch(`https://test-rose-ten-12.vercel.app/viewItem`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",
